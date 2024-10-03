@@ -5,7 +5,8 @@ This application presents the way to build an application built on USB HID commu
 # Firmware
 
 The firmware component is implemented on a PIC32MX type of mycrocontroller 
-[]
+
+![chipKIT](Assets/README/board_front.png)  
 
 ## Harmony configuration
 
