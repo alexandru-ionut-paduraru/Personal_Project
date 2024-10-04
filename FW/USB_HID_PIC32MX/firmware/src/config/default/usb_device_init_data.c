@@ -77,8 +77,8 @@ const USB_DEVICE_HID_INIT hidInit0 =
 {
 	 .hidReportDescriptorSize = sizeof(hid_rpt0),
 	 .hidReportDescriptor = (void *)&hid_rpt0,
-	 .queueSizeReportReceive = 1,
-	 .queueSizeReportSend = 1
+	 .queueSizeReportReceive = 64,
+	 .queueSizeReportSend = 10
 };
 
 
@@ -246,14 +246,14 @@ const struct
 {
     uint8_t bLength;                                    // Size of this descriptor in bytes
     uint8_t bDscType;                                   // STRING descriptor type
-    uint16_t string[17];                                // String
+    uint16_t string[22];                                // String
 }
 
 sd002 =
 {
     sizeof(sd002),
     USB_DESCRIPTOR_STRING,
-    {'H','I','D',' ','D','e','m','o',' ','-',' ','B','r','i','d','g','e'}
+    {'S','i','m','p','l','e',' ','H','I','D',' ','D','e','v','i','c','e',' ','D','e','m','o'}
 };
 
 /***************************************

@@ -67,7 +67,7 @@
 #pragma config FPBDIV =     DIV_1
 #pragma config FSOSCEN =    OFF
 #pragma config IESO =       ON
-#pragma config POSCMOD =    OFF
+#pragma config POSCMOD =    EC
 #pragma config OSCIOFNC =   OFF
 #pragma config FCKSM =      CSDCMD
 #pragma config WDTPS =      PS1048576
@@ -78,7 +78,7 @@
 #pragma config FPLLIDIV =   DIV_2
 #pragma config FPLLMUL =    MUL_20
 #pragma config FPLLODIV =   DIV_1
-#pragma config UPLLEN =     OFF
+#pragma config UPLLEN =     ON
 #pragma config UPLLIDIV =   DIV_2
 
 /*** DEVCFG3 ***/
@@ -215,6 +215,8 @@ void SYS_Initialize ( void* data )
 
 
 	GPIO_Initialize();
+
+    TMR2_Initialize();
 
 
 

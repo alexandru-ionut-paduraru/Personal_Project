@@ -99,7 +99,7 @@ extern "C" {
 /* HID Transfer Queue Size for both read and
    write. Applicable to all instances of the
    function driver */
-#define USB_DEVICE_HID_QUEUE_DEPTH_COMBINED                 2
+#define USB_DEVICE_HID_QUEUE_DEPTH_COMBINED                 74
 
 /*** USB Driver Configuration ***/
 
@@ -133,6 +133,9 @@ extern "C" {
 
 /* EP0 size in bytes */
 #define USB_DEVICE_EP0_BUFFER_SIZE                          64
+
+/* Enable SOF Events */
+#define USB_DEVICE_SOF_EVENT_ENABLE
 
 
 

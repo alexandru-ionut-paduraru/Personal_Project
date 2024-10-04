@@ -8,6 +8,10 @@ The firmware component is implemented on a PIC32MX type of mycrocontroller
 
 ![chipKIT](Assets/README/board_front.png)  
 
+The main features of this board are listed in the image below
+
+![chipKIT board features](Assets/README/Board_features.png)  
+
 ## Harmony configuration
 
 ### Basic configurations

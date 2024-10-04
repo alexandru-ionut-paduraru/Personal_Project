@@ -62,6 +62,69 @@
 // *****************************************************************************
 
 
+/*** Macros for LD4 pin ***/
+#define LD4_Set()               (LATGSET = (1<<15))
+#define LD4_Clear()             (LATGCLR = (1<<15))
+#define LD4_Toggle()            (LATGINV= (1<<15))
+#define LD4_OutputEnable()      (TRISGCLR = (1<<15))
+#define LD4_InputEnable()       (TRISGSET = (1<<15))
+#define LD4_Get()               ((PORTG >> 15) & 0x1)
+#define LD4_PIN                  GPIO_PIN_RG15
+
+/*** Macros for BTN1 pin ***/
+#define BTN1_Set()               (LATGSET = (1<<6))
+#define BTN1_Clear()             (LATGCLR = (1<<6))
+#define BTN1_Toggle()            (LATGINV= (1<<6))
+#define BTN1_OutputEnable()      (TRISGCLR = (1<<6))
+#define BTN1_InputEnable()       (TRISGSET = (1<<6))
+#define BTN1_Get()               ((PORTG >> 6) & 0x1)
+#define BTN1_PIN                  GPIO_PIN_RG6
+
+/*** Macros for BTN2 pin ***/
+#define BTN2_Set()               (LATGSET = (1<<7))
+#define BTN2_Clear()             (LATGCLR = (1<<7))
+#define BTN2_Toggle()            (LATGINV= (1<<7))
+#define BTN2_OutputEnable()      (TRISGCLR = (1<<7))
+#define BTN2_InputEnable()       (TRISGSET = (1<<7))
+#define BTN2_Get()               ((PORTG >> 7) & 0x1)
+#define BTN2_PIN                  GPIO_PIN_RG7
+
+/*** Macros for BTN3 pin ***/
+#define BTN3_Set()               (LATASET = (1<<0))
+#define BTN3_Clear()             (LATACLR = (1<<0))
+#define BTN3_Toggle()            (LATAINV= (1<<0))
+#define BTN3_OutputEnable()      (TRISACLR = (1<<0))
+#define BTN3_InputEnable()       (TRISASET = (1<<0))
+#define BTN3_Get()               ((PORTA >> 0) & 0x1)
+#define BTN3_PIN                  GPIO_PIN_RA0
+
+/*** Macros for LD3 pin ***/
+#define LD3_Set()               (LATGSET = (1<<14))
+#define LD3_Clear()             (LATGCLR = (1<<14))
+#define LD3_Toggle()            (LATGINV= (1<<14))
+#define LD3_OutputEnable()      (TRISGCLR = (1<<14))
+#define LD3_InputEnable()       (TRISGSET = (1<<14))
+#define LD3_Get()               ((PORTG >> 14) & 0x1)
+#define LD3_PIN                  GPIO_PIN_RG14
+
+/*** Macros for LD1 pin ***/
+#define LD1_Set()               (LATGSET = (1<<12))
+#define LD1_Clear()             (LATGCLR = (1<<12))
+#define LD1_Toggle()            (LATGINV= (1<<12))
+#define LD1_OutputEnable()      (TRISGCLR = (1<<12))
+#define LD1_InputEnable()       (TRISGSET = (1<<12))
+#define LD1_Get()               ((PORTG >> 12) & 0x1)
+#define LD1_PIN                  GPIO_PIN_RG12
+
+/*** Macros for LD2 pin ***/
+#define LD2_Set()               (LATGSET = (1<<13))
+#define LD2_Clear()             (LATGCLR = (1<<13))
+#define LD2_Toggle()            (LATGINV= (1<<13))
+#define LD2_OutputEnable()      (TRISGCLR = (1<<13))
+#define LD2_InputEnable()       (TRISGSET = (1<<13))
+#define LD2_Get()               ((PORTG >> 13) & 0x1)
+#define LD2_PIN                  GPIO_PIN_RG13
+
 
 // *****************************************************************************
 /* GPIO Port

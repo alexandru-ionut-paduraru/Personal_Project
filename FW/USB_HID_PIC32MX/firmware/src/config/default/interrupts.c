@@ -67,6 +67,7 @@
 // Section: System Interrupt Vector declarations
 // *****************************************************************************
 // *****************************************************************************
+void TIMER_2_Handler (void);
 void USB_1_Handler (void);
 
 
@@ -75,6 +76,11 @@ void USB_1_Handler (void);
 // Section: System Interrupt Vector definitions
 // *****************************************************************************
 // *****************************************************************************
+void __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (void)
+{
+    TIMER_2_InterruptHandler();
+}
+
 void __ISR(_USB_1_VECTOR, ipl1SOFT) USB_1_Handler (void)
 {
     DRV_USBFS_USB_Handler();
