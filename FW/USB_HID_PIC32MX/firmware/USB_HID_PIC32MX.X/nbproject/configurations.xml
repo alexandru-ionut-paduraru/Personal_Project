@@ -155,14 +155,31 @@
               <itemPath>../src/config/default/peripheral/tmr/plib_tmr2.h</itemPath>
               <itemPath>../src/config/default/peripheral/tmr/plib_tmr_common.h</itemPath>
             </logicalFolder>
+            <logicalFolder name="uart" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/uart/plib_uart_common.h</itemPath>
+              <itemPath>../src/config/default/peripheral/uart/plib_uart1.h</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="command" displayName="command" projectFiles="true">
+              <itemPath>../src/config/default/system/command/sys_command.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/default/system/console/sys_console.h</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console_uart.h</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console_local.h</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console_uart_definitions.h</itemPath>
+            </logicalFolder>
             <logicalFolder name="debug" displayName="debug" projectFiles="true">
               <itemPath>../src/config/default/system/debug/sys_debug.h</itemPath>
+              <itemPath>../src/config/default/system/debug/src/sys_debug_local.h</itemPath>
             </logicalFolder>
             <logicalFolder name="int" displayName="int" projectFiles="true">
               <itemPath>../src/config/default/system/int/sys_int_mapping.h</itemPath>
               <itemPath>../src/config/default/system/int/sys_int.h</itemPath>
+            </logicalFolder>
+            <logicalFolder name="reset" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/default/system/reset/sys_reset.h</itemPath>
             </logicalFolder>
             <itemPath>../src/config/default/system/system_common.h</itemPath>
             <itemPath>../src/config/default/system/system.h</itemPath>
@@ -234,13 +251,29 @@
             <logicalFolder name="tmr" displayName="tmr" projectFiles="true">
               <itemPath>../src/config/default/peripheral/tmr/plib_tmr2.c</itemPath>
             </logicalFolder>
+            <logicalFolder name="uart" displayName="uart" projectFiles="true">
+              <itemPath>../src/config/default/peripheral/uart/plib_uart1.c</itemPath>
+            </logicalFolder>
           </logicalFolder>
           <logicalFolder name="stdio" displayName="stdio" projectFiles="true">
             <itemPath>../src/config/default/stdio/xc32_monitor.c</itemPath>
           </logicalFolder>
           <logicalFolder name="system" displayName="system" projectFiles="true">
+            <logicalFolder name="command" displayName="command" projectFiles="true">
+              <itemPath>../src/config/default/system/command/src/sys_command.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="console" displayName="console" projectFiles="true">
+              <itemPath>../src/config/default/system/console/src/sys_console_uart.c</itemPath>
+              <itemPath>../src/config/default/system/console/src/sys_console.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="debug" displayName="debug" projectFiles="true">
+              <itemPath>../src/config/default/system/debug/src/sys_debug.c</itemPath>
+            </logicalFolder>
             <logicalFolder name="int" displayName="int" projectFiles="true">
               <itemPath>../src/config/default/system/int/src/sys_int.c</itemPath>
+            </logicalFolder>
+            <logicalFolder name="reset" displayName="reset" projectFiles="true">
+              <itemPath>../src/config/default/system/reset/sys_reset.c</itemPath>
             </logicalFolder>
           </logicalFolder>
           <logicalFolder name="usb" displayName="usb" projectFiles="true">
@@ -385,7 +418,7 @@
         <property key="generate-16-bit-code" value="false"/>
         <property key="generate-cross-reference-file" value="false"/>
         <property key="generate-micro-compressed-code" value="false"/>
-        <property key="heap-size" value="512"/>
+        <property key="heap-size" value="1024"/>
         <property key="input-libraries" value=""/>
         <property key="kseg-length" value=""/>
         <property key="kseg-origin" value=""/>
@@ -451,6 +484,9 @@
       <PK3OBPlatformTool>
         <property key="firmware.download.all" value="false"/>
       </PK3OBPlatformTool>
+      <Tool>
+        <property key="firmware.download.all" value="false"/>
+      </Tool>
     </conf>
   </confs>
 </configurationDescriptor>

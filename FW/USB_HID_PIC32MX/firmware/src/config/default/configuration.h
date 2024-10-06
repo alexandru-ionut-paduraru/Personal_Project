@@ -80,6 +80,31 @@ extern "C" {
 // *****************************************************************************
 // *****************************************************************************
 
+#define SYS_CMD_ENABLE
+#define SYS_CMD_DEVICE_MAX_INSTANCES       SYS_CONSOLE_DEVICE_MAX_INSTANCES
+#define SYS_CMD_PRINT_BUFFER_SIZE          1024U
+#define SYS_CMD_BUFFER_DMA_READY
+
+
+
+#define SYS_DEBUG_ENABLE
+#define SYS_DEBUG_GLOBAL_ERROR_LEVEL       SYS_ERROR_DEBUG
+#define SYS_DEBUG_BUFFER_DMA_READY
+#define SYS_DEBUG_USE_CONSOLE
+
+
+#define SYS_CONSOLE_DEVICE_MAX_INSTANCES   			(1U)
+#define SYS_CONSOLE_UART_MAX_INSTANCES 	   			(1U)
+#define SYS_CONSOLE_USB_CDC_MAX_INSTANCES 	   		(0U)
+#define SYS_CONSOLE_PRINT_BUFFER_SIZE        		(1024U)
+
+
+#define SYS_CONSOLE_INDEX_0                       0
+
+
+
+
+
 
 // *****************************************************************************
 // *****************************************************************************
@@ -93,18 +118,34 @@ extern "C" {
 // Section: Middleware & Other Library Configuration
 // *****************************************************************************
 // *****************************************************************************
+/* Number of Endpoints used */
+#define DRV_USBFS_ENDPOINTS_NUMBER                        3U
+
+/* The USB Device Layer will not initialize the USB Driver */
+#define USB_DEVICE_DRIVER_INITIALIZE_EXPLICIT
+
+/* Maximum device layer instances */
+#define USB_DEVICE_INSTANCES_NUMBER                         1U
+
+/* EP0 size in bytes */
+#define USB_DEVICE_EP0_BUFFER_SIZE                          64U
+
+/* Enable SOF Events */
+#define USB_DEVICE_SOF_EVENT_ENABLE
+
+
 /* Maximum instances of HID function driver */
 #define USB_DEVICE_HID_INSTANCES_NUMBER     1 
 
 /* HID Transfer Queue Size for both read and
    write. Applicable to all instances of the
    function driver */
-#define USB_DEVICE_HID_QUEUE_DEPTH_COMBINED                 74
+#define USB_DEVICE_HID_QUEUE_DEPTH_COMBINED                 2
 
 /*** USB Driver Configuration ***/
 
 /* Maximum USB driver instances */
-#define DRV_USBFS_INSTANCES_NUMBER                        1
+#define DRV_USBFS_INSTANCES_NUMBER                        1U
 
 /* Interrupt mode enabled */
 #define DRV_USBFS_INTERRUPT_MODE                          true
@@ -121,22 +162,6 @@ extern "C" {
 
 /* Alignment for buffers that are submitted to USB Driver*/ 
 #define USB_ALIGN  CACHE_ALIGN
-
-/* Number of Endpoints used */
-#define DRV_USBFS_ENDPOINTS_NUMBER                        3
-
-/* The USB Device Layer will not initialize the USB Driver */
-#define USB_DEVICE_DRIVER_INITIALIZE_EXPLICIT
-
-/* Maximum device layer instances */
-#define USB_DEVICE_INSTANCES_NUMBER                         1
-
-/* EP0 size in bytes */
-#define USB_DEVICE_EP0_BUFFER_SIZE                          64
-
-/* Enable SOF Events */
-#define USB_DEVICE_SOF_EVENT_ENABLE
-
 
 
 

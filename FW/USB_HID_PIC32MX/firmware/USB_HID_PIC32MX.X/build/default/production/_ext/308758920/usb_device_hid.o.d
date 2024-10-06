@@ -27,6 +27,10 @@ build/default/production/_ext/308758920/usb_device_hid.o: \
  ../src/config/default/usb/usb_device.h \
  ../src/config/default/usb/usb_hid.h \
  ../src/config/default/usb/src/usb_external_dependencies.h \
+ ../src/config/default/system/debug/sys_debug.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/system/console/src/sys_console_local.h \
  ../src/config/default/usb/src/usb_device_hid_local.h \
  ../src/config/default/osal/osal.h \
  ../src/config/default/osal/osal_definitions.h \
@@ -87,6 +91,14 @@ build/default/production/_ext/308758920/usb_device_hid.o: \
 ../src/config/default/usb/usb_hid.h:
 
 ../src/config/default/usb/src/usb_external_dependencies.h:
+
+../src/config/default/system/debug/sys_debug.h:
+
+../src/config/default/system/console/sys_console.h:
+
+../src/config/default/driver/driver.h:
+
+../src/config/default/system/console/src/sys_console_local.h:
 
 ../src/config/default/usb/src/usb_device_hid_local.h:
 

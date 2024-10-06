@@ -58,6 +58,7 @@
 // *****************************************************************************
 
 void TIMER_2_InterruptHandler( void );
+void UART_1_InterruptHandler( void );
 void DRV_USBFS_USB_Handler( void );
 
 

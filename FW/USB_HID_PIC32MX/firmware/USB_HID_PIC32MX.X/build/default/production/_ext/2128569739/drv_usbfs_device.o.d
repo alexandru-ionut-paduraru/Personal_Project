@@ -18,7 +18,6 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
  ../src/config/default/usb/usb_host.h \
  ../src/config/default/usb/usb_host_hub_interface.h \
  ../src/config/default/driver/usb/usbfs/src/plib_usbfs.h \
- ../src/config/default/driver/usb/usbfs/src/usbfs_registers.h \
  ../src/config/default/driver/usb/usbfs/src/plib_usbfs_header.h \
  ../src/config/default/driver/usb/usbfs/src/templates/usb_OTG_InterruptStatus_Default.h \
  ../src/config/default/driver/usb/usbfs/src/templates/usbfs_registers.h \
@@ -81,28 +80,37 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
  ../src/config/default/driver/usb/usbfs/src/drv_usbfs_local.h \
  ../src/config/default/driver/usb/drv_usb_external_dependencies.h \
  ../src/config/default/definitions.h \
+ ../src/config/default/system/command/sys_command.h \
+ ../src/config/default/system/system.h \
+ ../src/config/default/peripheral/clk/plib_clk.h \
+ ../src/config/default/peripheral/gpio/plib_gpio.h \
+ ../src/config/default/peripheral/evic/plib_evic.h \
+ ../src/config/default/usb/usb_chapter_9.h \
+ ../src/config/default/usb/usb_device.h \
+ ../src/config/default/usb/src/usb_device_mapping.h \
+ ../src/config/default/peripheral/uart/plib_uart1.h \
+ ../src/config/default/peripheral/uart/plib_uart_common.h \
  ../src/config/default/usb/usb_device_hid.h \
  ../src/config/default/usb/usb_common.h \
  ../src/config/default/usb/usb_chapter_9.h \
  ../src/config/default/usb/usb_device.h \
- ../src/config/default/system/system.h \
- ../src/config/default/usb/src/usb_device_mapping.h \
  ../src/config/default/usb/src/usb_device_function_driver.h \
  ../src/config/default/usb/usb_device.h \
  ../src/config/default/usb/usb_hid.h ../src/config/default/usb/usb_hid.h \
  ../src/config/default/peripheral/tmr/plib_tmr2.h \
  ../src/config/default/peripheral/tmr/plib_tmr_common.h \
- ../src/config/default/peripheral/clk/plib_clk.h \
- ../src/config/default/peripheral/gpio/plib_gpio.h \
- ../src/config/default/peripheral/evic/plib_evic.h \
  ../src/config/default/driver/usb/usbfs/drv_usbfs.h \
- ../src/config/default/usb/usb_chapter_9.h \
- ../src/config/default/usb/usb_device.h \
+ ../src/config/default/system/console/sys_console.h \
+ ../src/config/default/driver/driver.h \
+ ../src/config/default/system/console/src/sys_console_local.h \
+ ../src/config/default/system/console/src/sys_console_uart_definitions.h \
  ../src/config/default/system/int/sys_int.h \
+ ../src/config/default/system/reset/sys_reset.h \
  ../src/config/default/osal/osal.h \
  ../src/config/default/osal/osal_definitions.h \
  ../src/config/default/osal/osal_impl_basic.h \
- ../src/config/default/system/debug/sys_debug.h ../src/app.h \
+ ../src/config/default/system/debug/sys_debug.h \
+ ../src/config/default/system/console/sys_console.h ../src/app.h \
  ../src/config/default/osal/osal.h
 
 ../src/config/default/configuration.h:
@@ -142,8 +150,6 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
 ../src/config/default/usb/usb_host_hub_interface.h:
 
 ../src/config/default/driver/usb/usbfs/src/plib_usbfs.h:
-
-../src/config/default/driver/usb/usbfs/src/usbfs_registers.h:
 
 ../src/config/default/driver/usb/usbfs/src/plib_usbfs_header.h:
 
@@ -269,6 +275,26 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
 
 ../src/config/default/definitions.h:
 
+../src/config/default/system/command/sys_command.h:
+
+../src/config/default/system/system.h:
+
+../src/config/default/peripheral/clk/plib_clk.h:
+
+../src/config/default/peripheral/gpio/plib_gpio.h:
+
+../src/config/default/peripheral/evic/plib_evic.h:
+
+../src/config/default/usb/usb_chapter_9.h:
+
+../src/config/default/usb/usb_device.h:
+
+../src/config/default/usb/src/usb_device_mapping.h:
+
+../src/config/default/peripheral/uart/plib_uart1.h:
+
+../src/config/default/peripheral/uart/plib_uart_common.h:
+
 ../src/config/default/usb/usb_device_hid.h:
 
 ../src/config/default/usb/usb_common.h:
@@ -276,10 +302,6 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
 ../src/config/default/usb/usb_chapter_9.h:
 
 ../src/config/default/usb/usb_device.h:
-
-../src/config/default/system/system.h:
-
-../src/config/default/usb/src/usb_device_mapping.h:
 
 ../src/config/default/usb/src/usb_device_function_driver.h:
 
@@ -293,19 +315,19 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
 
 ../src/config/default/peripheral/tmr/plib_tmr_common.h:
 
-../src/config/default/peripheral/clk/plib_clk.h:
-
-../src/config/default/peripheral/gpio/plib_gpio.h:
-
-../src/config/default/peripheral/evic/plib_evic.h:
-
 ../src/config/default/driver/usb/usbfs/drv_usbfs.h:
 
-../src/config/default/usb/usb_chapter_9.h:
+../src/config/default/system/console/sys_console.h:
 
-../src/config/default/usb/usb_device.h:
+../src/config/default/driver/driver.h:
+
+../src/config/default/system/console/src/sys_console_local.h:
+
+../src/config/default/system/console/src/sys_console_uart_definitions.h:
 
 ../src/config/default/system/int/sys_int.h:
+
+../src/config/default/system/reset/sys_reset.h:
 
 ../src/config/default/osal/osal.h:
 
@@ -314,6 +336,8 @@ build/default/production/_ext/2128569739/drv_usbfs_device.o: \
 ../src/config/default/osal/osal_impl_basic.h:
 
 ../src/config/default/system/debug/sys_debug.h:
+
+../src/config/default/system/console/sys_console.h:
 
 ../src/app.h:
 

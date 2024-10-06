@@ -3,8 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/firmware/src/config/default/usb/src/usb_device_hid.c</file>
-            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/firmware/src/config/default/usb/src/usb_device.c</file>
+            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/FW/USB_HID_PIC32MX/firmware/src/app.h</file>
+            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/FW/USB_HID_PIC32MX/firmware/src/config/default/usb/src/usb_device_hid.c</file>
+            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/FW/USB_HID_PIC32MX/firmware/src/app.c</file>
+            <file>file:/C:/Users/alexa/HarmonyProjects/USB_HID_PIC32MX/FW/USB_HID_PIC32MX/firmware/src/config/default/usb_device_init_data.c</file>
         </group>
     </open-files>
 </project-private>

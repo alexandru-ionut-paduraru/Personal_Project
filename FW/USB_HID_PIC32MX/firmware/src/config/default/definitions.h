@@ -48,16 +48,21 @@
 #include <stdint.h>
 #include <stddef.h>
 #include <stdbool.h>
-#include "usb/usb_device_hid.h"
-#include "usb/usb_hid.h"
-#include "peripheral/tmr/plib_tmr2.h"
+#include "system/command/sys_command.h"
 #include "peripheral/clk/plib_clk.h"
 #include "peripheral/gpio/plib_gpio.h"
 #include "peripheral/evic/plib_evic.h"
-#include "driver/usb/usbfs/drv_usbfs.h"
 #include "usb/usb_chapter_9.h"
 #include "usb/usb_device.h"
+#include "peripheral/uart/plib_uart1.h"
+#include "usb/usb_device_hid.h"
+#include "usb/usb_hid.h"
+#include "peripheral/tmr/plib_tmr2.h"
+#include "driver/usb/usbfs/drv_usbfs.h"
+#include "system/console/sys_console.h"
+#include "system/console/src/sys_console_uart_definitions.h"
 #include "system/int/sys_int.h"
+#include "system/reset/sys_reset.h"
 #include "osal/osal.h"
 #include "system/debug/sys_debug.h"
 #include "app.h"
@@ -191,9 +196,13 @@ Remarks:
 
 typedef struct
 {
-	SYS_MODULE_OBJ  drvUSBFSObject;
-
     SYS_MODULE_OBJ  usbDevObject0;
+
+    SYS_MODULE_OBJ  sysDebug;
+
+    SYS_MODULE_OBJ  drvUSBFSObject;
+
+    SYS_MODULE_OBJ  sysConsole0;
 
 
 } SYSTEM_OBJECTS;

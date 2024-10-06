@@ -68,6 +68,7 @@
 // *****************************************************************************
 // *****************************************************************************
 void TIMER_2_Handler (void);
+void UART_1_Handler (void);
 void USB_1_Handler (void);
 
 
@@ -79,6 +80,11 @@ void USB_1_Handler (void);
 void __ISR(_TIMER_2_VECTOR, ipl1SOFT) TIMER_2_Handler (void)
 {
     TIMER_2_InterruptHandler();
+}
+
+void __ISR(_UART_1_VECTOR, ipl1SOFT) UART_1_Handler (void)
+{
+    UART_1_InterruptHandler();
 }
 
 void __ISR(_USB_1_VECTOR, ipl1SOFT) USB_1_Handler (void)

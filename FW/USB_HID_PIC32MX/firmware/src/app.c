@@ -54,10 +54,10 @@
 APP_DATA appData;
 
 /* Recieve data buffer */
-uint8_t receiveDataBuffer[64] CACHE_ALIGN;
+uint8_t __attribute__ ((aligned)) receiveDataBuffer[64];
 
 /* Transmit data buffer */
-uint8_t  transmitDataBuffer[64] CACHE_ALIGN;
+uint8_t __attribute__ ((aligned)) transmitDataBuffer[64];
 // *****************************************************************************
 // *****************************************************************************
 // Section: Application Callback Functions
@@ -121,6 +121,7 @@ void APP_Initialize ( void )
     appData.receiveDataBuffer = &receiveDataBuffer[0];
     appData.transmitDataBuffer = &transmitDataBuffer[0];
 
+    SYS_CONSOLE_PRINT("Program Started\r\n");
 }
 
 
@@ -147,7 +148,7 @@ void APP_Tasks ( void )
             {
                 /* Register a callback with device layer to get event notification (for end point 0) */
                 USB_DEVICE_EventHandlerSet(appData.usbDevHandle, APP_USBDeviceEventHandler, 0);
-
+                SYS_CONSOLE_PRINT("USB Handler set\r\n");
                 appData.state = APP_STATE_WAIT_FOR_CONFIGURATION;
             }
             else
@@ -162,6 +163,7 @@ void APP_Tasks ( void )
 
             if(appData.deviceConfigured == true)
             {
+                SYS_CONSOLE_PRINT("USB Configured\r\n");
                 /* Device is ready to run the main task */
                 appData.hidDataReceived = false;
                 appData.hidDataTransmitted = true;
@@ -184,13 +186,13 @@ void APP_Tasks ( void )
             {
                 /* Look at the data the host sent, to see what
                  * kind of application specific command it sent. */
-
+//                SYS_CONSOLE_PRINT("Receiving Data - %d\r\n", appData.receiveDataBuffer[0]);
                 switch(appData.receiveDataBuffer[0])
                 {
                     case 0x80:
 
                         /* Toggle on board LED1 to LED2. */
-                        LD3_Toggle(  );
+                        LD3_Toggle();
 
                         appData.hidDataReceived = false;
 
@@ -208,7 +210,7 @@ void APP_Tasks ( void )
                              * the first byte.  In this case, the Get Push-button State
                              * command. */
 
-                            appData.transmitDataBuffer[0] = 0x81;
+                            appData.transmitDataBuffer[0] = 0x1;
 
                             if( BTN3_Get())
                             {
@@ -249,18 +251,11 @@ void APP_Tasks ( void )
             break;
     }
     
-    if (BTN2_Get() || BTN1_Get()){
+    if (BTN2_Get() || BTN1_Get() || BTN3_Get()){
         LD2_Set();
     }else{
         LD2_Clear();
     }
-    if (BTN3_Get()){
-        LD3_Set();
-    }else{
-        LD3_Clear();
-    }
-    
-    
 }
 
 USB_DEVICE_HID_EVENT_RESPONSE APP_USBDeviceHIDEventHandler
@@ -278,7 +273,7 @@ USB_DEVICE_HID_EVENT_RESPONSE APP_USBDeviceHIDEventHandler
     switch (event)
     {
         case USB_DEVICE_HID_EVENT_REPORT_SENT:
-
+//            SYS_CONSOLE_PRINT("USB_DEVICE_HID_EVENT_REPORT_SENT \r\n");
             /* The eventData parameter will be USB_DEVICE_HID_EVENT_REPORT_SENT
              * pointer type containing details about the report that was
              * sent. */
@@ -292,7 +287,7 @@ USB_DEVICE_HID_EVENT_RESPONSE APP_USBDeviceHIDEventHandler
             break;
 
         case USB_DEVICE_HID_EVENT_REPORT_RECEIVED:
-
+//            SYS_CONSOLE_PRINT("USB_DEVICE_HID_EVENT_REPORT_RECEIVED \r\n");
             /* The eventData parameter will be USB_DEVICE_HID_EVENT_REPORT_RECEIVED
              * pointer type containing details about the report that was
              * received. */
@@ -307,24 +302,24 @@ USB_DEVICE_HID_EVENT_RESPONSE APP_USBDeviceHIDEventHandler
             break;
 
         case USB_DEVICE_HID_EVENT_SET_IDLE:
-
+            SYS_CONSOLE_PRINT("USB_DEVICE_HID_EVENT_SET_IDLE \r\n");
             /* For now we just accept this request as is. We acknowledge
              * this request using the USB_DEVICE_HID_ControlStatus()
              * function with a USB_DEVICE_CONTROL_STATUS_OK flag */
 
             USB_DEVICE_ControlStatus(appData.usbDevHandle, USB_DEVICE_CONTROL_STATUS_OK);
 
-            /* Save Idle rate recieved from Host */
+            /* Save Idle rate received from Host */
             appData.idleRate = ((USB_DEVICE_HID_EVENT_DATA_SET_IDLE*)eventData)->duration;
             break;
 
         case USB_DEVICE_HID_EVENT_GET_IDLE:
-
+            SYS_CONSOLE_PRINT("USB_DEVICE_HID_EVENT_GET_IDLE \r\n");
             /* Host is requesting for Idle rate. Now send the Idle rate */
             USB_DEVICE_ControlSend(appData.usbDevHandle, & (appData.idleRate),1);
 
-            /* On successfully reciveing Idle rate, the Host would acknowledge back with a
-               Zero Length packet. The HID function drvier returns an event
+            /* On successfully receiving Idle rate, the Host would acknowledge back with a
+               Zero Length packet. The HID function driver returns an event
                USB_DEVICE_HID_EVENT_CONTROL_TRANSFER_DATA_SENT to the application upon
                receiving this Zero Length packet from Host.
                USB_DEVICE_HID_EVENT_CONTROL_TRANSFER_DATA_SENT event indicates this control transfer

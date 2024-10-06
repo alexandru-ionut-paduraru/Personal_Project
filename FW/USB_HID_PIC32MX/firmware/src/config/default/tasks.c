@@ -74,14 +74,19 @@ void SYS_Tasks ( void )
 {
     /* Maintain system services */
     
+SYS_CMD_Tasks();
+
+
+
+
 
     /* Maintain Device Drivers */
     
 
     /* Maintain Middleware & Other Libraries */
-    
-    /* USB Device layer tasks routine */ 
+        /* USB Device layer tasks routine */ 
     USB_DEVICE_Tasks(sysObj.usbDevObject0);
+
 
 
 
