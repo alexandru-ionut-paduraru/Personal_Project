@@ -1,0 +1,159 @@
+<device>
+    <characteristics>
+        <name>HID TEST DEVICE</name>
+        <vid>04D8</vid>
+        <pid>003F</pid>
+    </characteristics>
+    <registers>
+        <register>
+            <name>CTRL 1</name>
+            <address>0</address>
+            <type>IN</type>
+            <length>1</length>
+            <reg_structure>
+                <bit>
+                    <start_bit>0</start_bit>
+                    <description>LED SOURCE</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>Internal Logic</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>External Source</description>
+                        </option>
+                    </options>
+                </bit>
+            </reg_structure>
+        </register>
+        <register>
+            <name>CTRL 2</name>
+            <address>1</address>
+            <type>IN</type>
+            <length>1</length>
+            <reg_structure>
+                <bit>
+                    <start_bit>0</start_bit>
+                    <description>LED 1</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>LED OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>LED ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>1</start_bit>
+                    <description>LED 2</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>LED OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>LED ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>2</start_bit>
+                    <description>LED 3</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>LED OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>LED ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>3</start_bit>
+                    <description>LED 4</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>LED OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>LED ON</description>
+                        </option>
+                    </options>
+                </bit>
+            </reg_structure>
+        </register>
+        <register>
+            <name>LED_STATUS</name>
+            <address>2</address>
+            <type>OUT</type>
+            <length>1</length>
+            <reg_structure>
+                <bit>
+                    <start_bit>0</start_bit>
+                    <description>LED 1</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>1</start_bit>
+                    <description>LED 2</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>2</start_bit>
+                    <description>LED 3</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>3</start_bit>
+                    <description>LED 4</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+            </reg_structure>
+        </register>
+    </registers>
+</device>
