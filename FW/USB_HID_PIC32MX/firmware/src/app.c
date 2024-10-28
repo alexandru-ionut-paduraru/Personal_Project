@@ -234,7 +234,42 @@ void APP_Tasks ( void )
                                     &appData.rxTransferHandle, appData.receiveDataBuffer, 64 );
                         }
                         break;
+                    case 0x10: //read register value
+                        if(appData.hidDataTransmitted)
+                        {
+                            appData.transmitDataBuffer[0] = 0x10;
+                            switch (appData.receiveDataBuffer[1]){ //register number
+                                case 0:
+                                    break;
+                                case 1:
+                                    break;
+                                case 2://LED_STATUS
+                                    appData.transmitDataBuffer[1] = 0x2; //register number
+                                    appData.transmitDataBuffer[2]=0; //led status
+                                    if (LD1_Get()) appData.transmitDataBuffer[2]|=(1<<0);
+                                    if (LD2_Get()) appData.transmitDataBuffer[2]|=(1<<1);
+                                    if (LD3_Get()) appData.transmitDataBuffer[2]|=(1<<2);
+                                    if (LD4_Get()) appData.transmitDataBuffer[2]|=(1<<3);
+                                    break;
+                                case 3: //BTN_STATUS
+                                    appData.transmitDataBuffer[1] = 0x3; //register number
+                                    appData.transmitDataBuffer[2]=0; //switch status
+                                    if (BTN1_Get()) appData.transmitDataBuffer[2]|=(1<<0);
+                                    if (BTN2_Get()) appData.transmitDataBuffer[2]|=(1<<1);
+                                    if (BTN3_Get()) appData.transmitDataBuffer[2]|=(1<<2);
+                                    break;
+                            }
+                            appData.hidDataTransmitted = false;
+                            /* Prepare the USB module to send the data packet to the host */
+                            USB_DEVICE_HID_ReportSend (USB_DEVICE_HID_INDEX_0,
+                                    &appData.txTransferHandle, appData.transmitDataBuffer, 64 );
 
+                            appData.hidDataReceived = false;
+                            /* Place a new read request. */
+                            USB_DEVICE_HID_ReportReceive (USB_DEVICE_HID_INDEX_0,
+                                    &appData.rxTransferHandle, appData.receiveDataBuffer, 64 );
+                        }
+                        break;
                     default:
 
                         appData.hidDataReceived = false;

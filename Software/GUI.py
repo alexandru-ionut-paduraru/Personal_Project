@@ -13,7 +13,7 @@ device_present=False
 dev=None
 in_ep=None
 out_ep=None
-dev_regs={}
+dev_regs=[]
 
 '''END - Global Variables'''
 
@@ -37,7 +37,7 @@ def save_file():
     if not filepath:
         return
     with open(filepath, mode="w", encoding="utf-8") as output_file:
-        output_file.write(text)
+        output_file.write()
     window.title(f"Simple Text Editor - {filepath}")
 
 def open_children(parent):
@@ -162,6 +162,7 @@ def generate_workspace_content(root):
                     reg_dict={}
                     reg_dict["name"]=regs[0].text #register name
                     reg_dict["type"]=regs[2].text
+                    reg_dict["address"]=regs[1].text
                     reg_dict["frame"]=tk.LabelFrame(frm_work, text=reg_dict["name"])
                     reg_dict["frame"].grid(row=place_row, column=0, sticky="ew", padx=5, pady=5)
                     for reg_child in regs:
@@ -169,28 +170,29 @@ def generate_workspace_content(root):
                             col_number=0
                             reg_dict["elements"]=[]
                             for element in reg_child:
-                                dict_element={element[1].text:{}}
+                                dict_element={"el_name":"", "options":{}}
                                 options=element.findall('.//option')
                                 for option in options:
-                                    dict_element[element[1].text][option[1].text]=option[0].text
+                                    dict_element["el_name"]=element[1].text
+                                    dict_element["bit_position"]=int(element[0].text)
+                                    dict_element["options"][option[1].text]=option[0].text
                                 reg_dict["elements"].append(dict_element)
                                 # print(option[1][1].text)
                                 if element.tag=="bit":
                                     tk.Label(reg_dict["frame"], text=element[1].text).grid(row=0, column=col_number, padx=5)
-                                    key=list(reg_dict["elements"][-1])[0]
-                                    value_list=list(reg_dict["elements"][-1][key].keys())
+                                    value_list=list(reg_dict["elements"][-1]["options"].keys())
                                     if reg_dict["type"]=="IN":
                                         combo_box=ttk.Combobox(reg_dict["frame"], values=value_list, width=max(len(item) for item in value_list))
                                         combo_box.grid(row=1, column=col_number, padx=5, pady=5)
                                         combo_box.set(value_list[0])
                                     elif reg_dict["type"]=="OUT":
-                                        text_box=tk.Label(reg_dict["frame"], width=max(len(item) for item in value_list))
-                                        text_box.grid(row=1, column=col_number, padx=5, pady=5)
-                                        text_box.configure(text=value_list[0])
-                                        if reg_dict["elements"][-1][key][value_list[0]]=="0":
-                                            text_box.configure(bg="#FF8888")
+                                        reg_dict["elements"][-1]["display_obj"]=tk.Label(reg_dict["frame"], width=max(len(item) for item in value_list))
+                                        reg_dict["elements"][-1]["display_obj"].grid(row=1, column=col_number, padx=5, pady=5)
+                                        reg_dict["elements"][-1]["display_obj"].configure(text=value_list[0])
+                                        if reg_dict["elements"][-1]["options"][value_list[0]]=="0":
+                                            reg_dict["elements"][-1]["display_obj"].configure(bg="#FF8888")
                                         else:
-                                            text_box.configure(bg="#88FF88")
+                                            reg_dict["elements"][-1]["display_obj"].configure(bg="#88FF88")
                                     else:
                                         pass
                                 col_number+=1
@@ -227,6 +229,18 @@ def USB_Script():
             device_connected=False
         dev_stat.config(text="CONNECTED") 
         dev_stat.config(bg="#55ff55")
+
+        # update graphical components for OUT registers
+        for reg in dev_regs:
+            if reg["type"]=="OUT":
+                data=get_register(dev, in_ep, out_ep, int(reg["address"]))
+                for element in reg["elements"]:          
+                    if data[2]&(1<<element["bit_position"])==0:
+                        element["display_obj"].configure(bg="#FF8888")
+                    else:
+                        element["display_obj"].configure(bg="#88FF88")
+                # print(data[0:3])
+                
 
     window.after(100, USB_Script)
 

@@ -27,7 +27,8 @@ while True:
 
     try:
         send_list=[0]*64
-        send_list[0]=0x81
+        send_list[0]=0x10
+        send_list[1]=0x03
         #print(f"Writing {len(send_list)} bytes to endpoint {hex(endpoint_out.bEndpointAddress)}")
         res=dev.write(endpoint_out.bEndpointAddress, send_list, 10)
     except Exception as e:
@@ -36,7 +37,7 @@ while True:
 
     try:
         # print(f"Reading {endpoint_in.wMaxPacketSize} bytes from endpoint {hex(endpoint_in.bEndpointAddress)}")
-        res=(dev.read(endpoint_in.bEndpointAddress, 64, timeout=10))[0:2].tobytes()
+        res=(dev.read(endpoint_in.bEndpointAddress, 64, timeout=10))[0:3].tobytes()
         print(res)
     except Exception as e:
         print(e)

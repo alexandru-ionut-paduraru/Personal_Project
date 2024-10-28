@@ -155,5 +155,55 @@
                 </bit>
             </reg_structure>
         </register>
+        <register>
+            <name>BTN_STATUS</name>
+            <address>3</address>
+            <type>OUT</type>
+            <length>1</length>
+            <reg_structure>
+                <bit>
+                    <start_bit>0</start_bit>
+                    <description>BTN 1</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>1</start_bit>
+                    <description>BTN 2</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+                <bit>
+                    <start_bit>2</start_bit>
+                    <description>BTN 3</description>
+                    <options>
+                        <option>
+                            <value>0</value>
+                            <description>OFF</description>
+                        </option>
+                        <option>
+                            <value>1</value>
+                            <description>ON</description>
+                        </option>
+                    </options>
+                </bit>
+            </reg_structure>
+        </register>
     </registers>
 </device>
