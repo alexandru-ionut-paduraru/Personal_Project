@@ -237,8 +237,14 @@ def USB_Script():
                 for element in reg["elements"]:          
                     if data[2]&(1<<element["bit_position"])==0:
                         element["display_obj"].configure(bg="#FF8888")
+                        for k in list(element["options"].keys()):
+                            if element["options"][k]=="0":
+                                element["display_obj"].configure(text=k)
                     else:
                         element["display_obj"].configure(bg="#88FF88")
+                        for k in list(element["options"].keys()):
+                            if element["options"][k]=="1":
+                                element["display_obj"].configure(text=k)
                 # print(data[0:3])
                 
 
